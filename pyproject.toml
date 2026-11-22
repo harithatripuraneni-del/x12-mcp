@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "x12-mcp"
+version = "0.1.0"
+description = "An MCP server that lets Claude parse, validate and explain X12 EDI files."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Haritha Tripuraneni" }]
+keywords = ["edi", "x12", "mcp", "claude", "logistics"]
+dependencies = ["mcp>=2.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+x12-mcp = "x12_mcp.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/x12_mcp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
